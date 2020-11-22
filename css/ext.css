@@ -1,0 +1,29 @@
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: linear-gradient(rgba(252, 102, 15, 0.8), rgba(252, 210, 23, 0.8)), url("/evaluacionwed1/taller2/img/cyt.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.col12 {
+    background-color: linear-gradient(rgba(252, 102, 15, 0.9), rgba(252, 210, 23, 0.9)) silver;
+}
+
+#col13 {
+    background-color: rgba(227, 252, 6, 0.329);
+}
+
+.abc {
+    justify-content: center;
+}
+
+.form-control-feedback {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+.form-control {
+    padding-left: 30px!important;
+}
