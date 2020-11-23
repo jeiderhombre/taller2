@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prinsipal</title>
+    <title>Productos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/ext.css">
 </head>
 
-<body class="container-fluid">
+<body>
 
-    <head>
+    <head class="justify-content-center">
         <div class="container-fluid row justify-content-center">
             <nav class="navbar navbar-expand-md navbar-light col13" style="background-color:  rgba(236, 252, 6, 0.342);">
                 <a class="navbar-brand text-white" href="#"><img width="40" height="40" class="rounded-5 d-inline-block align-top disabled" alt="" loading="lazy" src="img/tienWed.png"></img> TiendaWed</a>
@@ -21,28 +20,51 @@
             </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white active disabled" href="#" style="text-shadow:1px 0px 10px rgb(0, 0, 0);"><i class="fa fa-home text-white" aria-hidden="true"></i>  Pricipal</a>
+                        <li class="nav-item" style="text-shadow:1px 1px 2px rgb(180, 35, 35);">
+                            <a class="nav-link text-warning" href="index.html" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0); "><i class="fa fa-home text-white" aria-hidden="true"></i>  Pricipal</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-warning" href="ingresar.html" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0); "><i class="fa fa-pencil-square-o text-white" aria-hidden="true"></i>  Ingresar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-warning" href="productos.html" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0);; "><i class="fa fa-gavel text-white" aria-hidden="true"></i> Productos</a>
+                            <a class="nav-link text-white active disabled" href="productos.html" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0);; "><i class="fa fa-gavel text-white" aria-hidden="true"></i> Productos</a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
         <div>
-            <marquee style="color:rgb(128, 0, 0); text-shadow:5px 5px 5px rgb(255, 174, 0) ;" BEHAVIOR=alternate><img src="img/tienWed.png" width="20"> Productos de mi tienda web<img src="img/tienWed.png" width="20"></marquee>
+            <marquee style="color:rgb(128, 0, 0); text-shadow:5px 5px 5px rgb(255, 174, 0) ;" BEHAVIOR=alternate><img src="img/tienWed.png" width="20"> esta es mi tienda web<img src="img/tienWed.png" width="20"></marquee>
         </div>
     </head>
-    <main class="text-center">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h5 class="text-center">PAGUINA PRINSIPAL</h5>
-                <div class="col-12"><img src="https://raw.githubusercontent.com/jeiderhombre/fotos/main/1500x844_distribucion_productos.jpg" class="rounded-5" style="width: 30%;"></div>
+    <?php include("maestro.php");
+    $muñeco=new maestro();
+    $SQL="SELECT * FROM productos WHERE 1";
+    //CREAR EL AREGLO CONTENEDOR
+    $PRODUCTOS=$muñeco->consultar($SQL);
+?>
+    <main class="align-content-center">
+        
+        <div class="container-fluid align-content-center">
+            <h5 class="text-center">productos</h5>
+            <div class="row">
+                <?php foreach($PRODUCTOS as $PRODUCTOS):?>
+                    <div class="col-6 col-md-4 col-xl-2 card justify-content-center" style="width: 18rem; background-color:  rgba(236, 252, 6, 0.342);">
+                        <img src="<?php echo($PRODUCTOS["foto"])?>" class="card-img-top" alt="producto">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><?php echo($PRODUCTOS['nomPro']);?></h5>
+                            <p class="card-text justify-content-center">DESCRIPCION<br><?php echo($PRODUCTOS['descripción']);?></p>
+                        </div>		
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-danger"><label>Marca: </label><?php echo($PRODUCTOS['marPro']);?></li>
+                            <li class="list-group-item bg-danger"><label>Precio: </label><?php echo($PRODUCTOS['precio']);?></li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="borrar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="borra" class="card-link">Borrar</a>
+                            <a href="editar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="edit" class="card-link">Editar</a>
+                        </div>
+                    </div>
+                <?php endforeach?>
             </div>
         </div>
     </main>

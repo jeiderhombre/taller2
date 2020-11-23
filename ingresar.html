@@ -29,7 +29,7 @@
                             <a class="nav-link text-white active disabled" href="#" style="text-shadow:1px 0px 10px rgb(0, 0, 0);"><i class="fa fa-pencil-square-o text-white" aria-hidden="true"></i>  Ingresar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-warning" href="productos.html" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0);"><i class="fa fa-gavel text-white" aria-hidden="true"></i> Productos</a>
+                            <a class="nav-link text-warning" href="productos.php" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0);"><i class="fa fa-gavel text-white" aria-hidden="true"></i> Productos</a>
                         </li>
                     </ul>
                 </div>
@@ -68,8 +68,11 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 text-center form-group has-feedback">
-                        <label>Imagen</label>
-                        <input name="ima" type="file" class="form-control-file" style="text-shadow:1px 1.5px 3px rgb(0, 0, 0);text-shadow:5px 5px 5px rgb(255, 174, 0) ;text-shadow:5px 5px 5px rgba(255, 11, 11, 0.603) ;">
+                        <label>URL Imagen</label>
+                        <div class="input-group">
+                            <i class="fa fa-file-image-o input-group-prepend input-group-text bg-white" aria-hidden="true"></i>
+                            <input name="ima" type="text" class="form-control" placeholder="URL aqui" required>
+                        </div>
                     </div>
                 </div>
                 <div class=" row form-group justify-content-center">
