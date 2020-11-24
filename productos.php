@@ -49,19 +49,78 @@
             <h5 class="text-center">productos</h5>
             <div class="row">
                 <?php foreach($PRODUCTOS as $PRODUCTOS):?>
-                    <div class="col-6 col-md-4 col-xl-2 card justify-content-center" style="width: 18rem; background-color:  rgba(236, 252, 6, 0.342);">
-                        <img src="<?php echo($PRODUCTOS["foto"])?>" class="card-img-top" alt="producto">
+                    <div class="col-6 col-md-4 col-xl-3 card justify-content-center col11" style="width: 18rem; background-color: rgba(252, 6, 6, 0.322);">
+                        <img src="<?php echo($PRODUCTOS["foto"])?>" style="width: 11rem;" class="card-img-top" alt="producto">
                         <div class="card-body text-center">
                             <h5 class="card-title"><?php echo($PRODUCTOS['nomPro']);?></h5>
                             <p class="card-text justify-content-center">DESCRIPCION<br><?php echo($PRODUCTOS['descripción']);?></p>
                         </div>		
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item bg-danger"><label>Marca: </label><?php echo($PRODUCTOS['marPro']);?></li>
-                            <li class="list-group-item bg-danger"><label>Precio: </label><?php echo($PRODUCTOS['precio']);?></li>
-                        </ul>
+                        <label>Marca: </label><?php echo($PRODUCTOS['marPro']);?><br>
+                        <label>Precio: </label><?php echo($PRODUCTOS['precio']);?>
                         <div class="card-body">
-                            <a href="borrar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="borra" class="card-link">Borrar</a>
-                            <a href="editar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="edit" class="card-link">Editar</a>
+                            <a href="borrar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="borra" class="card-link" style="color:rgb(255, 255, 255); text-shadow:5px 5px 5px rgb(0, 0, 0);">Borrar</a>
+                            <a href="#" name="edit" class="card-link" data-toggle="modal" data-target="#editar<?php echo($PRODUCTOS['IDpro'])?>" style="color:rgb(255, 255, 255); text-shadow:5px 5px 5px rgb(0, 0, 0);">Editar</a>
+                            <!-- modal-->
+                            <div class="modal fade" id="editar<?php echo($PRODUCTOS['IDpro'])?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="editar.php?id=<?php echo($PRODUCTOS['IDpro'])?>" method="POST">
+                                            <div class="modal-body">
+                                            
+                                                <div class="row card-group justify-content-center">
+                                                    <div class=" col-md-6 text-center form-group">
+                                                        <label>Editar Nombre Producto</label></br>
+                                                        <div class="input-group has-feedback has-feedback">
+                                                            <i class="fa fa-cubes input-group-prepend input-group-text bg-white"></i>
+                                                            <input name="pro" class="form-control " type="text " placeholder="nombre aqui " required value="<?php echo($PRODUCTOS['nomPro']);?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class=" col-md-6 text-center form-group has-feedback ">
+                                                        <label>Editar Marca Producto</label></br>
+                                                        <div class="input-group ">
+                                                            <i class="fa fa-pencil input-group-prepend input-group-text bg-white"></i>
+                                                            <input name="mar" type="text " class="form-control " placeholder="marca aqui " required value="<?php echo($PRODUCTOS['marPro']);?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row card-group justify-content-center">
+                                                    <div class=" col-md-6 text-center form-group has-feedback">
+                                                        <label>Editar Precio Producto</label></br>
+                                                        <div class="input-group ">
+                                                            <i class="fa fa-money input-group-prepend input-group-text bg-white" aria-hidden="true"></i>
+                                                            <input name="pre" type="number" class="form-control " placeholder="precio aqui" required value="<?php echo($PRODUCTOS['precio']);?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class=" col-md-6 text-center form-group has-feedback">
+                                                        <label>Editar URL Imagen</label>
+                                                        <div class="input-group">
+                                                            <i class="fa fa-file-image-o input-group-prepend input-group-text bg-white" aria-hidden="true"></i>
+                                                            <input name="ima" type="text" class="form-control" placeholder="URL aqui" required value="<?php echo($PRODUCTOS["foto"])?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=" row form-group justify-content-center">
+                                                    <div class="col-12 text-center form-group has-feedback">
+                                                        <label>Editar Descripsion Producto</label><br>
+                                                        <textarea name="texAr" type="text " class="form-control " rows="3 " placeholder="descripcion aqui "><?php echo($PRODUCTOS['descripción']);?></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="but" class="btn btn-warning">Editar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 <?php endforeach?>
