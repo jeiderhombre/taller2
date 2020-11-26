@@ -49,17 +49,24 @@
             <h5 class="text-center">productos</h5>
             <div class="row">
                 <?php foreach($PRODUCTOS as $PRODUCTOS):?>
-                    <div class="col-6 col-md-4 col-xl-3 card justify-content-center col11" style="width: 18rem; background-color: rgba(252, 6, 6, 0.322);">
-                        <img src="<?php echo($PRODUCTOS["foto"])?>" style="width: 11rem;" class="card-img-top" alt="producto">
+                    <div class="col-12 col-md-3 col-xl-2 card align-content-center col11" style="width: 18rem; background-color: rgba(255, 254, 254, 0.322);">
+                        <div class="align-content-center">
+                            <img src="<?php echo($PRODUCTOS["foto"])?>" style="width: 11rem;" class="card-img-top" alt="producto">
+                        </div>
                         <div class="card-body text-center">
                             <h5 class="card-title"><?php echo($PRODUCTOS['nomPro']);?></h5>
                             <p class="card-text justify-content-center">DESCRIPCION<br><?php echo($PRODUCTOS['descripción']);?></p>
-                        </div>		
-                        <label>Marca: </label><?php echo($PRODUCTOS['marPro']);?><br>
-                        <label>Precio: </label><?php echo($PRODUCTOS['precio']);?>
+                        </div>
+                            <div>
+                                <pre>Marca: <?php echo($PRODUCTOS['marPro']);?> </pre>
+                            </div>
+                            <div>
+                                <pre>Precio: <?php echo($PRODUCTOS['precio']);?></pre>
+                            </div>
+                        
                         <div class="card-body">
-                            <a href="borrar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="borra" class="card-link" style="color:rgb(255, 255, 255); text-shadow:5px 5px 5px rgb(0, 0, 0);">Borrar</a>
-                            <a href="#" name="edit" class="card-link" data-toggle="modal" data-target="#editar<?php echo($PRODUCTOS['IDpro'])?>" style="color:rgb(255, 255, 255); text-shadow:5px 5px 5px rgb(0, 0, 0);">Editar</a>
+                            <a href="borrar.php?id=<?php echo($PRODUCTOS['IDpro']);?>" name="borra" class="card-link" style="color:rgb(0, 0, 0); text-shadow:5px 5px 5px rgb(255, 255, 255);">Borrar</a>
+                            <a href="#" name="edit" class="card-link" data-toggle="modal" data-target="#editar<?php echo($PRODUCTOS['IDpro'])?>" style="color:rgb(0, 0, 0); text-shadow:5px 5px 5px rgb(255, 255, 255);">Editar</a>
                             <!-- modal-->
                             <div class="modal fade" id="editar<?php echo($PRODUCTOS['IDpro'])?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
